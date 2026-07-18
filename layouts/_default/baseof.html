@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if not .IsHome }}{{ .Title }} — {{ end }}{{ site.Title }}</title>
+  {{ block "head" . }}{{ end }}
+  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+</head>
+<body>
+  <header>
+    <h1><a href="{{ "/" | relURL }}">groundhopping.</a><a class="domain" href="https://www.gnatzinger.de">gnatzinger.de</a></h1>
+    <nav>
+      <a{{ if or .IsHome (eq .Section "spiele") }} class="aktiv"{{ end }} href="{{ "/" | relURL }}">spiele</a>
+      <a{{ if eq .Title "Statistik" }} class="aktiv"{{ end }} href="{{ "/statistik/" | relURL }}">statistik</a>
+      <a{{ if eq .Title "Über" }} class="aktiv"{{ end }} href="{{ "/ueber/" | relURL }}">über</a>
+    </nav>
+  </header>
+
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  <footer>
+    &copy; {{ now.Format "2006" }}, <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://leafletjs.com/">Leaflet</a>, kein Tracking
+  </footer>
+</body>
+</html>

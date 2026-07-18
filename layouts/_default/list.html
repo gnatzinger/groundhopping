@@ -1,0 +1,9 @@
+{{ define "main" }}
+<ul class="spiele">
+  {{ range .Pages.ByDate.Reverse }}
+  <li>
+    <a href="{{ .RelPermalink }}"><time>{{ .Date.Format "02.01.2006" }}</time> <span>{{ .Params.heim }} - {{ .Params.gast }} <b class="erg">{{ .Params.ergebnis }}</b></span></a>
+  </li>
+  {{ end }}
+</ul>
+{{ end }}

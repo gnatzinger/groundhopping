@@ -1,0 +1,14 @@
+{{ define "main" }}
+{{- $groundsMap := partial "grounds-map.html" . -}}
+{{- $g := index $groundsMap (.Params.stadion | default "") -}}
+<article>
+  <p class="meta">{{ .Date.Format "02.01.2006" }}{{ with .Params.wettbewerb }}, {{ . }}{{ end }}, {{ .Params.regelwerk | default "Association football" }}<sup><a href="{{ "/regelwerk/" | relURL }}">[?]</a></sup></p>
+  <h1>{{ .Params.heim }} <b>{{ .Params.ergebnis }}</b> {{ .Params.gast }}</h1>
+  <p class="meta">
+    {{ with $g }}{{ .name }}, {{ .stadt }}, {{ .land }}{{ end }}
+    {{- with .Params.zuschauer }}, {{ lang.FormatNumberCustom 0 . }} Zuschauer{{ end }}
+  </p>
+  {{ .Content }}
+  <p class="meta"><a href="{{ "/" | relURL }}">← alle Spiele</a></p>
+</article>
+{{ end }}

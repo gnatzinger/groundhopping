@@ -1,0 +1,17 @@
+EIGENE PIN-MARKER
+=================
+
+Lege deinen eigenen Marker hier ab und ersetze marker.svg
+(oder passe den Dateinamen in static/js/map.js an, Zeile "iconUrl").
+
+Anforderungen:
+- Format: SVG (empfohlen, skaliert verlustfrei) oder PNG
+- Größe: 22 × 30 px (Breite × Höhe) — andere Größen gehen auch,
+  dann in map.js "iconSize" anpassen
+- Ankerpunkt: die SPITZE des Pins muss unten mittig liegen
+  ("iconAnchor: [Breite/2, Höhe]" in map.js)
+- Dateigröße klein halten (< 5 KB), keine eingebetteten Rasterbilder im SVG
+- Farbe passend zum Theme: Akzent #5d510b, Hintergrund #e9f8e9
+
+Optional für PNG auf Retina-Displays: marker@2x.png in doppelter
+Größe ablegen und in map.js bei L.icon "iconRetinaUrl" ergänzen.

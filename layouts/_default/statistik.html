@@ -1,0 +1,69 @@
+{{ define "main" }}
+{{- $spiele := where site.RegularPages "Section" "spiele" -}}
+{{- $groundsMap := partial "grounds-map.html" . -}}
+
+{{- $tore := 0 -}}
+{{- range $spiele -}}
+  {{- $t := split .Params.ergebnis ":" -}}
+  {{- $tore = add $tore (add (int (index $t 0)) (int (index $t 1))) -}}
+{{- end -}}
+
+{{- $laender := slice -}}
+{{- range $id, $g := $groundsMap -}}
+  {{- $laender = $laender | append $g.land -}}
+{{- end -}}
+{{- $laender = uniq $laender -}}
+
+{{- $wettbewerbe := slice -}}
+{{- range $spiele -}}
+  {{- with .Params.wettbewerb -}}{{- $wettbewerbe = $wettbewerbe | append . -}}{{- end -}}
+{{- end -}}
+
+<article>
+<h1>{{ .Title }}</h1>
+
+<div class="kennzahlen">
+  <div><strong>{{ len $spiele }}</strong><span>Spiele</span></div>
+  <div><strong>{{ len $groundsMap }}</strong><span>Stadien</span></div>
+  <div><strong>{{ len $laender }}</strong><span>Länder</span></div>
+  <div><strong>{{ len (uniq $wettbewerbe) }}</strong><span>Wettbewerbe</span></div>
+  <div><strong>{{ $tore }}</strong><span>Tore</span></div>
+</div>
+
+<h2>Spiele pro Jahr</h2>
+<table>
+  <tr><th>Jahr</th><th>Spiele</th></tr>
+  {{ range $spiele.GroupByDate "2006" }}
+  <tr><td>{{ .Key }}</td><td class="z">{{ len .Pages }}</td></tr>
+  {{ end }}
+</table>
+
+<h2>Meistbesuchte Stadien</h2>
+{{- $top := slice -}}
+{{- range $id, $g := $groundsMap -}}
+  {{- $top = $top | append (dict "name" $g.name "stadt" $g.stadt "n" (len (where $spiele "Params.stadion" $id))) -}}
+{{- end -}}
+<table>
+  <tr><th>Stadion</th><th>Stadt</th><th>Spiele</th></tr>
+  {{ range first 10 (sort $top "n" "desc") }}
+  <tr><td>{{ .name }}</td><td>{{ .stadt }}</td><td class="z">{{ .n }}</td></tr>
+  {{ end }}
+</table>
+
+<h2>Spiele pro Land</h2>
+<table>
+  <tr><th>Land</th><th>Spiele</th></tr>
+  {{- $proLand := slice -}}
+  {{- range $land := $laender -}}
+    {{- $n := 0 -}}
+    {{- range $id, $g := $groundsMap -}}
+      {{- if eq $g.land $land -}}{{- $n = add $n (len (where $spiele "Params.stadion" $id)) -}}{{- end -}}
+    {{- end -}}
+    {{- $proLand = $proLand | append (dict "land" $land "n" $n) -}}
+  {{- end -}}
+  {{ range sort $proLand "n" "desc" }}
+  <tr><td>{{ .land }}</td><td class="z">{{ .n }}</td></tr>
+  {{ end }}
+</table>
+</article>
+{{ end }}

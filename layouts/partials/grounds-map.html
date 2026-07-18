@@ -1,0 +1,17 @@
+{{- /* Baut die Stadion-Übersicht aus allen Spiel-Posts.
+     Jeder Post mit `lat` definiert sein Stadion; Posts mit nur
+     `stadion:`-Tag erben die Daten. Gibt ein Dict id → Daten zurück. */ -}}
+{{- $grounds := dict -}}
+{{- range where site.RegularPages "Section" "spiele" -}}
+  {{- $id := .Params.stadion -}}
+  {{- if and $id .Params.lat (not (index $grounds $id)) -}}
+    {{- $grounds = merge $grounds (dict $id (dict
+          "id" $id
+          "name" (.Params.stadionname | default $id)
+          "stadt" (.Params.stadt | default "")
+          "land" (.Params.land | default "")
+          "lat" .Params.lat
+          "lng" .Params.lng)) -}}
+  {{- end -}}
+{{- end -}}
+{{- return $grounds -}}

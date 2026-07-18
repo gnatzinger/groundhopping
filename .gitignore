@@ -1,0 +1,5 @@
+# Hugo-Build-Ausgabe und temporäre Dateien
+/public/
+/resources/_gen/
+.hugo_build.lock
+.DS_Store

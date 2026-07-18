@@ -1,0 +1,13 @@
+# baseURL wird beim GitHub-Actions-Build automatisch gesetzt
+baseURL = "https://example.org/"
+locale = "de"
+defaultContentLanguage = "de"
+title = "groundhopping.gnatzinger.de"
+
+disableKinds = ["taxonomy", "term"]
+
+[permalinks]
+spiele = "/spiele/:contentbasename/"
+
+[params]
+tagline = "Ein Logbuch aller besuchten Stadien."

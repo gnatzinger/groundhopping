@@ -1,0 +1,47 @@
+{{ define "head" }}
+<link rel="stylesheet" href="{{ "css/leaflet.css" | relURL }}">
+{{ end }}
+
+{{ define "main" }}
+{{- $spiele := where site.RegularPages "Section" "spiele" -}}
+{{- $groundsMap := partial "grounds-map.html" . -}}
+{{- $grounds := slice -}}
+{{- range $id, $g := $groundsMap -}}
+  {{- $grounds = $grounds | append $g -}}
+{{- end -}}
+
+<div class="filter">
+  <select id="f-land"><option value="">Land</option></select>
+  <select id="f-regelwerk"><option value="">Regelwerk</option></select><sup class="fragezeichen"><a href="{{ "/regelwerk/" | relURL }}">[?]</a></sup>
+  <select id="f-jahr"><option value="">Jahr</option></select>
+  <button id="f-reset" type="button">Alle Spiele</button>
+</div>
+
+<div id="map"></div>
+
+<div class="sortieren">
+  <select id="f-sort">
+    <option value="desc">neueste zuerst</option>
+    <option value="asc">älteste zuerst</option>
+  </select>
+</div>
+
+<ul class="spiele" id="spiele">
+  {{ range $spiele.ByDate.Reverse }}
+  {{- $g := index $groundsMap (.Params.stadion | default "") -}}
+  {{- $u := .RelPermalink -}}
+  <li data-stadion="{{ .Params.stadion }}"
+      data-land="{{ with $g }}{{ .land }}{{ end }}"
+      data-regelwerk="{{ .Params.regelwerk | default "Association football" }}"
+      data-jahr="{{ .Date.Format "2006" }}"
+      data-datum="{{ .Date.Format "2006-01-02" }}">
+    <a href="{{ $u }}"><time>{{ .Date.Format "02.01.2006" }}</time> <span>{{ .Params.heim }} - {{ .Params.gast }} <b class="erg">{{ .Params.ergebnis }}</b></span></a>
+  </li>
+  {{ end }}
+</ul>
+<p id="leer" class="leer" hidden>Keine Spiele für diese Auswahl.</p>
+
+<script>window.GROUNDS = {{ $grounds | jsonify | safeJS }};</script>
+<script src="{{ "js/leaflet.js" | relURL }}"></script>
+<script src="{{ "js/map.js" | relURL }}"></script>
+{{ end }}

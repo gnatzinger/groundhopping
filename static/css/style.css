@@ -1,0 +1,187 @@
+/* Design: Terminal (panr, MIT) × Struktur: Etch (Lukas Joswiak, MIT) */
+:root {
+  --background: #e9f8e9;
+  --foreground: #000000;
+  --accent: #5d510b;
+  --muted: color-mix(in srgb, var(--foreground) 55%, var(--background));
+  --line: color-mix(in srgb, var(--foreground) 20%, transparent);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Wichtig: gefilterte Zeilen wirklich ausblenden
+   (schlägt sonst gegen display:flex der Listenzeilen fehl) */
+[hidden] { display: none !important; }
+
+/* Stabiles Gerüst: Scrollleiste immer reservieren, damit sich die
+   Breite (Karte!) nie ändert — egal ob Liste lang oder kurz ist */
+html { overflow-y: scroll; }
+
+body {
+  font-family: "Fira Code", "JetBrains Mono", Monaco, Consolas, "Ubuntu Mono", monospace;
+  font-size: 1rem;
+  line-height: 1.54em;
+  background: var(--background);
+  color: var(--foreground);
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+a { color: var(--accent); }
+
+/* Kopf (Etch-Struktur) */
+header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--foreground);
+  margin-bottom: 1.6rem;
+}
+header h1 { font-size: 1.45rem; }
+header h1 a { color: var(--foreground); text-decoration: none; }
+header h1 a.domain { text-decoration: underline; }
+header nav { display: flex; gap: 1rem; }
+header nav a.aktiv { color: var(--foreground); font-weight: 600; text-decoration: none; }
+
+/* Karte */
+#map {
+  height: 340px;
+  border: 1px solid var(--foreground);
+  margin-bottom: 1rem;
+  background: var(--background);
+  position: relative;
+}
+#map::after {
+  content: "Karte lädt …";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--background);
+  color: var(--muted);
+  z-index: 500;
+  pointer-events: none;
+}
+#map.bereit::after { display: none; }
+
+/* Filterzeile (über der Karte) + Sortieren (darunter) — kompakt */
+.filter, .sortieren { display: flex; gap: 0.9rem; flex-wrap: wrap; align-items: baseline; margin-bottom: 1rem; }
+.filter button {
+  font: inherit;
+  font-size: 0.85rem;
+  background: transparent;
+  color: var(--foreground);
+  border: none;
+  border-bottom: 1px solid var(--foreground);
+  padding: 0.15rem 0.1rem;
+  cursor: pointer;
+}
+.filter button.gedimmt { color: var(--muted); border-bottom-color: var(--muted); }
+/* [?] hochgestellt neben dem Regelwerk-Select */
+.fragezeichen { align-self: flex-start; margin-left: -0.6rem; }
+.fragezeichen a, sup a { font-size: 0.65rem; }
+.filter select, .sortieren select {
+  font: inherit;
+  font-size: 0.85rem;
+  background: transparent;
+  color: var(--foreground);
+  border: none;
+  border-bottom: 1px solid var(--foreground);
+  border-radius: 0;
+  padding: 0.15rem 1.4rem 0.15rem 0.1rem;
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--foreground) 50%),
+                    linear-gradient(135deg, var(--foreground) 50%, transparent 50%);
+  background-position: calc(100% - 12px) 55%, calc(100% - 8px) 55%;
+  background-size: 4px 4px, 4px 4px;
+  background-repeat: no-repeat;
+}
+.filter select option, .sortieren select option { background: var(--background); }
+
+/* Spielliste (Etch: eine Zeile pro Post) */
+ul.spiele { list-style: none; }
+ul.spiele a {
+  display: flex;
+  gap: 0.8rem;
+  align-items: baseline;
+  padding: 0.15rem 0;
+  color: var(--foreground);
+  text-decoration: none;
+}
+ul.spiele a:hover { color: var(--accent); }
+ul.spiele time { color: var(--muted); font-size: 0.85rem; white-space: nowrap; }
+ul.spiele .erg { color: var(--accent); font-weight: 600; }
+.leer { color: var(--muted); margin-top: 1rem; }
+
+/* Einzelseiten */
+article h1 { font-size: 1.35rem; margin: 0.3rem 0 0.3rem; }
+article h1 b { color: var(--accent); }
+article h2 { font-size: 1.15rem; margin: 1.2rem 0 0.4rem; }
+article p { margin: 0.8rem 0; }
+.meta { color: var(--muted); font-size: 0.85rem; }
+
+/* Statistik */
+table { border-collapse: collapse; margin: 1rem 0; }
+th, td { border: 1px solid var(--foreground); padding: 0.25rem 0.6rem; text-align: left; font-size: 0.9rem; }
+th { text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.75rem; }
+td.z { text-align: right; }
+.kennzahlen { display: flex; gap: 1.6rem; flex-wrap: wrap; margin: 1rem 0; }
+.kennzahlen div { border: 1px solid var(--foreground); padding: 0.5rem 1rem; }
+.kennzahlen strong { display: block; font-size: 1.4rem; color: var(--accent); }
+.kennzahlen span { font-size: 0.8rem; color: var(--muted); }
+
+/* Fuß */
+footer { margin-top: 3rem; padding-top: 0.8rem; border-top: 1px solid var(--line); font-size: 0.8rem; color: var(--muted); }
+footer a { color: var(--muted); }
+
+/* Popups ohne Fade-Animation: öffnen/schließen sofort */
+.leaflet-fade-anim .leaflet-popup { transition: none; }
+
+/* Leaflet an Theme anpassen: überall rechte Winkel, Mono-Schrift */
+.leaflet-popup-content-wrapper {
+  background: var(--background);
+  color: var(--foreground);
+  border-radius: 0;
+  border: 1px solid var(--foreground);
+  box-shadow: none;
+}
+.leaflet-popup-tip-container { display: none; } /* kein Pfeil, kein Schatten */
+.leaflet-popup-content { font-family: inherit; font-size: 0.85rem; margin: 8px 30px 8px 12px; }
+.leaflet-container a.leaflet-popup-close-button {
+  top: 6px;
+  right: 6px;
+  color: var(--foreground);
+  font: inherit;
+}
+.leaflet-container a.leaflet-popup-close-button:hover { color: var(--accent); }
+.leaflet-popup-content strong { display: block; }
+.leaflet-popup-content span { color: var(--muted); font-size: 0.8rem; }
+.leaflet-container { font-family: inherit; }
+.leaflet-bar, .leaflet-bar a {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.leaflet-control-zoom { border: 1px solid var(--foreground) !important; }
+.leaflet-control-zoom a {
+  background: var(--background);
+  color: var(--foreground);
+  border-bottom: 1px solid var(--foreground);
+}
+.leaflet-control-zoom a:last-child { border-bottom: none; }
+.leaflet-control-zoom a:hover { background: color-mix(in srgb, var(--accent) 15%, var(--background)); }
+.leaflet-control-attribution {
+  background: color-mix(in srgb, var(--background) 80%, transparent);
+  font-family: inherit;
+  font-size: 0.6rem;
+}
+
+@media (max-width: 520px) {
+  body { font-size: 0.9rem; }
+  #map { height: 260px; }
+  ul.spiele a { flex-direction: column; gap: 0; padding: 0.3rem 0; }
+}
