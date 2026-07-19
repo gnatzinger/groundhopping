@@ -1,5 +1,4 @@
-# baseURL wird beim GitHub-Actions-Build automatisch gesetzt
-baseURL = "https://example.org/"
+baseURL = "https://groundhopping.gnatzinger.de/"
 locale = "de"
 defaultContentLanguage = "de"
 title = "groundhopping.gnatzinger.de"

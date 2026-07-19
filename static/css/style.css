@@ -52,9 +52,10 @@ header nav a.aktiv { color: var(--foreground); font-weight: 600; text-decoration
   height: 340px;
   border: 1px solid var(--foreground);
   margin-bottom: 1rem;
-  background: var(--background);
+  background: #d9d9d9; /* grau: sichtbar, solange Tiles noch laden */
   position: relative;
 }
+.leaflet-container { background: #d9d9d9; }
 #map::after {
   content: "Karte lädt …";
   position: absolute;
@@ -168,12 +169,12 @@ footer a { color: var(--muted); }
 }
 .leaflet-control-zoom { border: 1px solid var(--foreground) !important; }
 .leaflet-control-zoom a {
-  background: var(--background);
-  color: var(--foreground);
-  border-bottom: 1px solid var(--foreground);
+  background: var(--accent);
+  color: var(--background);
+  border-bottom: 1px solid var(--background);
 }
 .leaflet-control-zoom a:last-child { border-bottom: none; }
-.leaflet-control-zoom a:hover { background: color-mix(in srgb, var(--accent) 15%, var(--background)); }
+.leaflet-control-zoom a:hover { background: color-mix(in srgb, var(--accent) 80%, var(--foreground)); color: var(--background); }
 .leaflet-control-attribution {
   background: color-mix(in srgb, var(--background) 80%, transparent);
   font-family: inherit;
@@ -182,6 +183,8 @@ footer a { color: var(--muted); }
 
 @media (max-width: 520px) {
   body { font-size: 0.9rem; }
+  header { gap: 0.5rem 1rem; }
+  header h1 { font-size: 1rem; }
   #map { height: 260px; }
   ul.spiele a { flex-direction: column; gap: 0; padding: 0.3rem 0; }
 }

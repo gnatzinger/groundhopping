@@ -3,3 +3,10 @@
 /resources/_gen/
 .hugo_build.lock
 .DS_Store
+
+# Nur lokale Doku/Werkzeuge – nicht auf GitHub
+/README.md
+/ANPASSUNGEN.md
+/HOSTING.md
+/tools/
+/static/img/EIGENE-PINS.txt
