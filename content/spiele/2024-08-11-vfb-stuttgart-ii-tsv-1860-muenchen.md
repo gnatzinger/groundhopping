@@ -13,3 +13,4 @@ gast: "TSV 1860 München"
 ergebnis: "3:1"
 regelwerk: "Association football"
 ---
+Am 11.08. bei glühender Hitze zum Auswärtsspiel gegen Stuttgart II in Großaspach gefahren, um die Löwen, in einem Stadion irgendwo im Nirgendwo mit 3-1 verlieren zu sehen.
