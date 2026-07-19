@@ -13,23 +13,16 @@
   });
   var f = { stadion: "", land: "", regelwerk: "", jahr: "" };
 
-  /* --- Karte: Welt nur einmal sichtbar, auf Performance getrimmt ---
-     Ganze Zoomstufen (Tiles in nativer Auflösung, kein Skalieren) und
-     Tile-Nachladen erst NACH der Zoom-Animation — das hält das Zoomen
-     flüssig. Details: ANPASSUNGEN.md → "Karte: Performance". */
+  /* --- Karte: Leaflet-Standardverhalten (wie leafletjs.com),
+     nur begrenzt auf "Welt genau einmal" --- */
   var map = L.map(mapEl, {
     minZoom: 2,
     maxBounds: [[-85, -180], [85, 180]],
-    maxBoundsViscosity: 1.0,
-    zoomAnimation: false,   /* Zoom springt sofort statt zu gleiten */
-    fadeAnimation: false
+    maxBoundsViscosity: 1.0
   });
-  /* ohne {r}: normale statt @2x-Retina-Tiles — ein Viertel der Pixel */
   var tiles = L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png", {
     maxZoom: 19,
     noWrap: true,
-    updateWhenZooming: false,
-    updateWhenIdle: true,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>'
   }).addTo(map);
 
