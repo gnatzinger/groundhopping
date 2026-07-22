@@ -1,0 +1,15 @@
+{{ define "main" }}
+<article>
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+</article>
+
+<ul class="spiele">
+  {{ range (.Pages.GroupByDate "2006") }}
+  <li class="jahr-kopf">{{ .Key }}</li>
+  {{ range .Pages }}
+  <li><a href="{{ .RelPermalink }}"><time>{{ .Date.Format "02.01.2006" }}</time> <span>{{ .Title }}</span></a></li>
+  {{ end }}
+  {{ end }}
+</ul>
+{{ end }}
