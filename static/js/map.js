@@ -75,7 +75,9 @@
     var attr = sel.id.slice(2);
     var werte = {};
     zeilen.forEach(function (z) { if (z.dataset[attr]) werte[z.dataset[attr]] = 1; });
-    Object.keys(werte).sort().forEach(function (w) { sel.add(new Option(w, w)); });
+    var keys = Object.keys(werte).sort();
+    if (attr === "jahr") keys.reverse(); /* Jahre neu → alt */
+    keys.forEach(function (w) { sel.add(new Option(w, w)); });
     sel.onchange = function () { f[attr] = sel.value; render(true); };
   });
   sortSel.onchange = function () { render(false); }; /* Sortieren bewegt die Karte nicht */
