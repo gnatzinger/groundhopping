@@ -1,0 +1,10 @@
+{{- /* Click-to-load-Fassade für Instagram-Reels.
+       Nutzung:  {{< instagram DEIN_CODE >}}
+       DEIN_CODE = der Teil hinter /reel/ in der URL. */ -}}
+{{- $id := .Get 0 -}}
+<div class="embed-fassade">
+  <button type="button" class="embed-laden" data-embed="instagram" data-id="{{ $id }}">
+    <b>&#9654; Instagram-Reel laden</b>
+    <small>Beim Laden verbindet sich dein Browser mit Instagram, das dabei Daten erfasst (Einverständniserklärung Tracking).</small>
+  </button>
+</div>

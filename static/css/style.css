@@ -165,6 +165,31 @@ article figure { margin: 1.2rem 0; }
 article figure img { margin: 0 !important; }
 article figcaption { font-size: 0.8rem; color: var(--muted); margin-top: 0.3rem; }
 
+/* Click-to-load-Fassade (Instagram u. a.): Kasten wie das Kartenfenster */
+.embed-laden {
+  display: block;
+  width: 100%;
+  max-width: 22rem;
+  min-height: 22rem;
+  margin: 1.2rem 0;
+  padding: 2rem 1.2rem;
+  border: 1px solid var(--foreground);
+  background: #d9d9d9;
+  color: var(--foreground);
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+}
+.embed-laden.breit { max-width: 100%; min-height: 14rem; } /* YouTube, X */
+.embed-laden b { display: block; }
+.embed-laden small {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
 /* Videos (YouTube, Reels) im richtigen Seitenverhältnis, voll responsiv.
    Markdown:  <div class="video"><iframe ...></iframe></div>
    Hochkant:  <div class="video hoch"><iframe ...></iframe></div>  */

@@ -1,0 +1,10 @@
+{{- /* Click-to-load-Fassade für einen Beitrag von X (Twitter).
+       Nutzung:  {{< x https://twitter.com/USER/status/12345 >}}
+       (komplette Beitrags-URL, twitter.com oder x.com). */ -}}
+{{- $url := .Get 0 -}}
+<div class="embed-fassade">
+  <button type="button" class="embed-laden breit" data-embed="twitter" data-id="{{ $url }}">
+    <b>&#9654; Beitrag von X laden</b>
+    <small>Beim Laden verbindet sich dein Browser mit X (Twitter), das dabei Daten erfasst (Einverständniserklärung Tracking).</small>
+  </button>
+</div>

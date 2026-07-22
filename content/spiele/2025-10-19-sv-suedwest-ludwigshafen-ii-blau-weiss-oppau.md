@@ -12,7 +12,4 @@ gast: "Blau-Weiß Oppau"
 ergebnis: "2:6"
 regelwerk: "Association football"
 ---
-<div class="video hoch">
-  <iframe src="https://www.instagram.com/reel/REEL_ID/embed"
-          title="Instagram" loading="lazy" allowfullscreen></iframe>
-</div>
+{{< instagram DQJEaM7CEkM >}} 

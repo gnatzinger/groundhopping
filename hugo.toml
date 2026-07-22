@@ -8,5 +8,9 @@ disableKinds = ["taxonomy", "term"]
 [permalinks]
 spiele = "/spiele/:contentbasename/"
 
+# Erlaubt rohes HTML in Markdown (Einbettungen: Instagram, YouTube, iframes …)
+[markup.goldmark.renderer]
+unsafe = true
+
 [params]
 tagline = "Ein Logbuch aller besuchten Stadien."

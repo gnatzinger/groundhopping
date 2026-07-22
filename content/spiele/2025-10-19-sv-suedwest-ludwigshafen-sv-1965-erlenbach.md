@@ -13,7 +13,4 @@ gast: "SV 1965 Erlenbach"
 ergebnis: "4:0"
 regelwerk: "Association football"
 ---
-<div class="video hoch">
-  <iframe src="https://www.instagram.com/reel/DQJEaM7CEkM/?utm_source=ig_embed&amp;utm_campaign=loading"
-          title="Instagram" loading="lazy" allowfullscreen></iframe>
-</div>
+{{< instagram DQJEaM7CEkM >}} 

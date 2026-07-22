@@ -1,0 +1,10 @@
+{{- /* Click-to-load-Fassade für YouTube.
+       Nutzung:  {{< youtube VIDEO_ID >}}
+       VIDEO_ID = der Teil hinter watch?v= oder youtu.be/ in der URL. */ -}}
+{{- $id := .Get 0 -}}
+<div class="embed-fassade">
+  <button type="button" class="embed-laden breit" data-embed="youtube" data-id="{{ $id }}">
+    <b>&#9654; YouTube-Video laden</b>
+    <small>Beim Laden verbindet sich dein Browser mit YouTube/Google, das dabei Daten erfasst (Einverständniserklärung Tracking).</small>
+  </button>
+</div>

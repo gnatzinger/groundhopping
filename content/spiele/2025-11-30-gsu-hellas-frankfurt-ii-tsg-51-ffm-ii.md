@@ -13,7 +13,4 @@ gast: "TSG 51 Ffm II"
 ergebnis: "2:3"
 regelwerk: "Association football"
 ---
-<div class="video hoch">
-  <iframe src="https://www.instagram.com/reel/DSIqvaXiPoU/?utm_source=ig_embed&amp;utm_campaign=loading"
-          title="Instagram" loading="lazy" allowfullscreen></iframe>
-</div>
+{{< instagram DSIqvaXiPoU >}} 

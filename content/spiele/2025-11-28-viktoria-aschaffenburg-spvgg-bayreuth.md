@@ -14,7 +14,4 @@ ergebnis: "0:1"
 regelwerk: "Association football"
 zuschauer: 603
 ---
-<div class="video hoch">
-  <iframe src="https://www.instagram.com/reel/DSIqvaXiPoU/?utm_source=ig_embed&amp;utm_campaign=loading"
-          title="Instagram" loading="lazy" allowfullscreen></iframe>
-</div>
+{{< instagram DSIqvaXiPoU >}} 
