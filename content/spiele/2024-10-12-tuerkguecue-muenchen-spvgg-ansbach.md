@@ -13,3 +13,4 @@ gast: "SpVgg Ansbach"
 ergebnis: "2:2"
 regelwerk: "Association football"
 ---
+	

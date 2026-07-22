@@ -20,6 +20,9 @@
     maxBounds: [[-85, -180], [85, 180]],
     maxBoundsViscosity: 1.0
   });
+  map.setView([48, 11], 4); /* Start-Ansicht — Leaflet braucht sie, bevor
+                               Kacheln/Marker hinzugefügt werden; fitBounds
+                               unten verfeinert sie dann */
   var tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     noWrap: true,
@@ -41,8 +44,15 @@
   var marker = {};
   var bounds = [];
   grounds.forEach(function (g) {
-    bounds.push([g.lat, g.lng]);
-    marker[g.id] = L.marker([g.lat, g.lng], { icon: pin })
+    /* Ungültige Koordinaten überspringen, damit ein Tippfehler in einem
+       Post nie die ganze Karte + Filter lahmlegt */
+    var lat = parseFloat(g.lat), lng = parseFloat(g.lng);
+    if (!isFinite(lat) || !isFinite(lng)) {
+      if (window.console) console.warn("Groundhopper: ungültige Koordinaten für", g.id, g.lat, g.lng);
+      return;
+    }
+    bounds.push([lat, lng]);
+    marker[g.id] = L.marker([lat, lng], { icon: pin })
       .addTo(map)
       .bindPopup("<strong>" + g.name + "</strong><span>" + g.stadt + "</span>")
       /* Klick toggelt Popup → Filter folgt dem Popup-Zustand (wie das ×) */
@@ -54,7 +64,11 @@
         if (f.stadion === g.id) { f.stadion = ""; filternSpaeter(); }
       });
   });
-  if (bounds.length) map.fitBounds(bounds, { padding: [30, 30] });
+  /* Standard-Ansicht: alle Stadien, großzügig gerahmt (weiter rausgezoomt) */
+  function fitTo(coords) {
+    if (coords.length) map.fitBounds(coords, { padding: [45, 45], maxZoom: 11 });
+  }
+  fitTo(bounds);
 
   /* Filter-Selects aus der Liste befüllen */
   selects.forEach(function (sel) {
@@ -62,23 +76,24 @@
     var werte = {};
     zeilen.forEach(function (z) { if (z.dataset[attr]) werte[z.dataset[attr]] = 1; });
     Object.keys(werte).sort().forEach(function (w) { sel.add(new Option(w, w)); });
-    sel.onchange = function () { f[attr] = sel.value; render(); };
+    sel.onchange = function () { f[attr] = sel.value; render(true); };
   });
-  sortSel.onchange = render;
+  sortSel.onchange = function () { render(false); }; /* Sortieren bewegt die Karte nicht */
 
   reset.onclick = function () {
     f.stadion = f.land = f.regelwerk = f.jahr = "";
     selects.forEach(function (sel) { sel.value = ""; });
     map.closePopup();
-    render();
+    render(true);
   };
 
-  /* Bei Karten-Events erst das Popup (weg-)zeichnen lassen, dann filtern */
+  /* Bei Karten-Events (Pin-Klick) erst das Popup (weg-)zeichnen lassen, dann
+     filtern — ohne die Karte zu verschieben (fit=false) */
   function filternSpaeter() {
-    requestAnimationFrame(function () { setTimeout(render, 0); });
+    requestAnimationFrame(function () { setTimeout(function () { render(false); }, 0); });
   }
 
-  function render() {
+  function render(fit) {
     var richtung = sortSel.value;
     var n = 0, offen = {};
 
@@ -95,10 +110,16 @@
     });
 
     /* 2. Marker passend ein-/ausblenden (nur display, daher schnell) */
+    var sichtbar = [];
     grounds.forEach(function (g) {
+      if (!marker[g.id]) return;
       var el = marker[g.id].getElement();
       if (el) el.style.display = offen[g.id] ? "" : "none";
+      if (offen[g.id]) sichtbar.push(marker[g.id].getLatLng());
     });
+
+    /* Karte auf die sichtbaren Marker nachführen (nur bei Filterwechsel) */
+    if (fit) fitTo(sichtbar);
 
     /* 3. Sortieren */
     var sorted = zeilen.slice().sort(function (a, b) {

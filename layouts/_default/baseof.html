@@ -12,6 +12,7 @@
     <h1><a href="{{ "/" | relURL }}">groundhopping.</a><a class="domain" href="https://www.gnatzinger.de">gnatzinger.de</a></h1>
     <nav>
       <a{{ if or .IsHome (eq .Section "spiele") }} class="aktiv"{{ end }} href="{{ "/" | relURL }}">spiele</a>
+      <a{{ if eq .Section "weiteres" }} class="aktiv"{{ end }} href="{{ "/weiteres/" | relURL }}">weiteres</a>
       <a{{ if eq .Title "Statistik" }} class="aktiv"{{ end }} href="{{ "/statistik/" | relURL }}">statistik</a>
       <a{{ if eq .Title "Über" }} class="aktiv"{{ end }} href="{{ "/ueber/" | relURL }}">über</a>
     </nav>

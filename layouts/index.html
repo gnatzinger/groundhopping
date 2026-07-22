@@ -27,13 +27,19 @@
 </div>
 
 <ul class="spiele" id="spiele">
+  {{ $letztesJahr := "" }}
   {{ range $spiele.ByDate.Reverse }}
   {{- $g := index $groundsMap (.Params.stadion | default "") -}}
   {{- $u := .RelPermalink -}}
+  {{- $jahr := .Date.Format "2006" -}}
+  {{- if ne $jahr $letztesJahr }}
+  <li class="jahr-kopf">{{ $jahr }}</li>
+  {{- $letztesJahr = $jahr }}
+  {{- end }}
   <li data-stadion="{{ .Params.stadion }}"
       data-land="{{ with $g }}{{ .land }}{{ end }}"
       data-regelwerk="{{ .Params.regelwerk | default "Association football" }}"
-      data-jahr="{{ .Date.Format "2006" }}"
+      data-jahr="{{ $jahr }}"
       data-datum="{{ .Date.Format "2006-01-02" }}">
     <a href="{{ $u }}"><time>{{ .Date.Format "02.01.2006" }}</time> <span>{{ .Params.heim }} - {{ .Params.gast }} <b class="erg">{{ .Params.ergebnis }}</b></span></a>
   </li>

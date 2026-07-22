@@ -13,3 +13,4 @@ gast: "Tianjin Jinmen Tiger FC"
 ergebnis: "3:0"
 regelwerk: "Association football"
 ---
+Definitiv mein Groundhopping-Highlight des Jahres: Der Länderpunkt China am 22.08. in Shanghai beim Pokal Viertelfinale zwischen Shanghai Port FC (Oscar) und Tianjin Jimen Tiger FC (3-0). Moderne Fußballarena, etwa zur Hälfte gefüllt mit stimmungsvollem aktivem Support in der Kurve.

@@ -5,7 +5,7 @@ stadion: neu-isenburg
 stadionname: "Sportparkstadion"
 stadt: "Neu-Isenburg"
 land: Deutschland
-lat: 50.050409734105614 8.671969742049688
+lat: 50.050409734105614
 lng: 8.671969742049688
 wettbewerb: "Gruppenliga Frankfurt Ost"
 heim: "SpVgg 03 Neu-Isenburg"

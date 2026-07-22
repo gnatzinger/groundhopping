@@ -13,3 +13,4 @@ gast: "EA Guingamp"
 ergebnis: "1:2"
 regelwerk: "Association football"
 ---
+Bei recht eisigen Temperaturen sah ich das Ligue 2 Spiel Rodez AF gegen EA Guingamp (1-2) am 13. September. Ein erneut mittelmäßiger Kick an einem Freitagabend in einem durchaus ansehnlichen kleinen städtischen Stadion. Das Spiel fand während der Protestreihe gegen die Zerstückelung des Spielplans der zweiten französischen Liga statt. Es gab ein paar Spruchbänder dagegen, aber ob der Grund für die ebenfalls mittelmäßige Stimmung ein politischer Boykott war? Ich denke nicht.
