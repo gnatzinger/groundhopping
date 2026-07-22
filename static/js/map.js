@@ -81,7 +81,7 @@
     requestAnimationFrame(function () { setTimeout(filtern, 0); });
   }
 
-  /* Nur ein-/ausblenden — kein DOM-Umbau, daher schnell */
+  /* Nur ein-/ausblenden — kein DOM-Umbau */
   function filtern() {
     var n = 0;
     var offen = {};
