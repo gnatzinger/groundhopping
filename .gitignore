@@ -5,6 +5,7 @@
 .DS_Store
 
 # Nur lokale Doku/Werkzeuge – nicht auf GitHub
+/EINBETTUNGEN.md
 /README.md
 /ANPASSUNGEN.md
 /HOSTING.md
