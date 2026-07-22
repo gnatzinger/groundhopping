@@ -95,8 +95,6 @@
       z.hidden = !zeigen;
       if (zeigen) { n++; offen[d.stadion] = 1; }
     });
-    /* Marker nur per display umschalten — deutlich billiger,
-       als Layer aus der Karte zu entfernen und wieder einzufügen */
     grounds.forEach(function (g) {
       var el = marker[g.id].getElement();
       if (el) el.style.display = offen[g.id] ? "" : "none";
@@ -104,8 +102,7 @@
     leer.hidden = n !== 0;
     reset.classList.toggle("gedimmt", !!(f.stadion || f.land || f.regelwerk || f.jahr));
   }
-
-  /* DOM-Umbau nur, wenn wirklich umsortiert wird */
+  /*dom umbau*/
   function sortieren(richtung) {
     zeilen.sort(function (a, b) {
       return richtung === "asc"
