@@ -13,3 +13,4 @@ gast: "FC Ingolstadt 04"
 ergebnis: "1:1"
 regelwerk: "Association football"
 ---
+Mein erstes Spiel, ein ereignisarmes Unentschieden gegen Ingolstadt und der Beginn einer langjährigen toxischen Beziehung zu einem gewissen Turn- und Sportverein.

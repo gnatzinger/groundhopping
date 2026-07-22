@@ -126,6 +126,46 @@ article h2 { font-size: 1.15rem; margin: 1.2rem 0 0.4rem; }
 article p { margin: 0.8rem 0; }
 .meta { color: var(--muted); font-size: 0.85rem; }
 
+/* --- Bilder & Einbettungen: gleicher Rahmen wie das Kartenfenster --- */
+article img,
+article video,
+article iframe,
+article .twitter-tweet,
+article .instagram-media,
+article blockquote.tiktok-embed {
+  display: block;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  margin: 1.2rem 0 !important;
+  border: 1px solid var(--foreground) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: #d9d9d9;
+}
+article img { height: auto; }
+
+/* Bildunterschrift */
+article figure { margin: 1.2rem 0; }
+article figure img { margin: 0 !important; }
+article figcaption { font-size: 0.8rem; color: var(--muted); margin-top: 0.3rem; }
+
+/* Videos (YouTube, Reels) im richtigen Seitenverhältnis, voll responsiv.
+   Markdown:  <div class="video"><iframe ...></iframe></div>
+   Hochkant:  <div class="video hoch"><iframe ...></iframe></div>  */
+article .video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  margin: 1.2rem 0;
+}
+article .video.hoch { aspect-ratio: 9 / 16; max-width: 22rem; }
+article .video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0 !important;
+}
+
 /* Statistik */
 table { border-collapse: collapse; margin: 1rem 0; }
 th, td { border: 1px solid var(--foreground); padding: 0.25rem 0.6rem; text-align: left; font-size: 0.9rem; }

@@ -5,8 +5,8 @@ stadion: niederalteich
 stadionname: "Sportanlage Niederalteich"
 stadt: "Niederalteich"
 land: Deutschland
-lat: 48.7645  # Koordinaten ungefähr – bitte prüfen
-lng: 13.0242
+lat: 48.770294615628075 
+lng: 13.027690305138082
 heim: "Spvgg Niederalteich"
 gast: "SpVgg Unterhaching"
 ergebnis: "1:13"
