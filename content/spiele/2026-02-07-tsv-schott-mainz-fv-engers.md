@@ -5,8 +5,8 @@ stadion: mombach
 stadionname: "Bezirkssportanlage Mombach"
 stadt: "Mainz"
 land: Deutschland
-lat: 50.0248  # Koordinaten ungefähr – bitte prüfen
-lng: 8.2273
+lat: 50.012595696469646 
+lng: 8.226003028933395
 wettbewerb: "Freundschaftsspiel"
 heim: "TSV Schott Mainz"
 gast: "FV Engers"

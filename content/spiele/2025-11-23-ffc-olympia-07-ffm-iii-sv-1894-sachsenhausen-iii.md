@@ -5,8 +5,8 @@ stadion: ostparkarena
 stadionname: "Ostparkarena"
 stadt: "Frankfurt am Main"
 land: Deutschland
-lat: 50.1173  # Koordinaten ungefähr – bitte prüfen
-lng: 8.7143
+lat: 50.12132532010935 
+lng: 8.726875718026903
 heim: "FFC Olympia 07 FFM III"
 gast: "SV 1894 Sachsenhausen III"
 ergebnis: "0:4"

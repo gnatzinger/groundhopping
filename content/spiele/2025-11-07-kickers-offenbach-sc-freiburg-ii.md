@@ -5,8 +5,8 @@ stadion: bieberer-berg
 stadionname: "Stadion am Bieberer Berg"
 stadt: "Offenbach"
 land: Deutschland
-lat: 50.0948
-lng: 8.7881
+lat: 50.09469008471785 
+lng: 8.79859359100852
 wettbewerb: "Regionalliga Südwest"
 heim: "Kickers Offenbach"
 gast: "SC Freiburg II"

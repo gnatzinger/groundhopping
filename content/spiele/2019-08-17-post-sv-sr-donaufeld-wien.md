@@ -5,8 +5,8 @@ stadion: post-sportanlage
 stadionname: "Post-Sportanlage Platz 1"
 stadt: "Wien"
 land: Österreich
-lat: 48.2242  # Koordinaten ungefähr – bitte prüfen
-lng: 16.4396
+lat: 48.22350968014412
+lng: 16.326463157528014
 wettbewerb: "Wiener Stadtliga"
 heim: "Post SV"
 gast: "SR Donaufeld Wien"

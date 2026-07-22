@@ -5,8 +5,8 @@ stadion: walter-mundorf
 stadionname: "Walter-Mundorf-Stadion Nebenplatz"
 stadt: "Siegburg"
 land: Deutschland
-lat: 50.7893  # Koordinaten ungefähr – bitte prüfen
-lng: 7.1969
+lat: 50.80518215065937
+lng: 7.220601099537814
 wettbewerb: "Freundschaftsspiel"
 heim: "Siegburger SV 04"
 gast: "Ahrweiler BC"
