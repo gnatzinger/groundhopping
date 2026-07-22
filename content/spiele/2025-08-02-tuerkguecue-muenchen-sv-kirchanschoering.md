@@ -5,8 +5,8 @@ stadion: bsa-hw
 stadionname: "BSA Heinrich-Wieland-Straße"
 stadt: "München"
 land: Deutschland
-lat: 48.1143  # Koordinaten ungefähr – bitte prüfen
-lng: 11.6449
+lat: 48.112130010829055
+lng: 11.646071422771387
 wettbewerb: "Bayernliga Süd"
 heim: "Türkgücü München"
 gast: "SV Kirchanschöring"

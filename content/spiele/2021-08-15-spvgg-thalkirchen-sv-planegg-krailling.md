@@ -5,8 +5,8 @@ stadion: thalkirchner
 stadionname: "Bezirkssportanlage Thalkirchner Straße"
 stadt: "München"
 land: Deutschland
-lat: 48.10731041890417
-lng: 11.546882661538595
+lat: 48.10734204548988
+lng: 11.54695150063264
 heim: "SpVgg Thalkirchen"
 gast: "SV Planegg-Krailling"
 ergebnis: "1:3"
