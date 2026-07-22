@@ -119,6 +119,18 @@ ul.spiele time { color: var(--muted); font-size: 0.85rem; white-space: nowrap; }
 ul.spiele .erg { color: var(--accent); font-weight: 600; }
 .leer { color: var(--muted); margin-top: 1rem; }
 
+/* Jahres-Überschrift in der Spielliste */
+ul.spiele li.jahr-kopf {
+  list-style: none;
+  color: var(--muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  margin: 1.1rem 0 0.25rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid var(--line);
+}
+ul.spiele li.jahr-kopf:first-child { margin-top: 0; }
+
 /* Einzelseiten */
 article h1 { font-size: 1.35rem; margin: 0.3rem 0 0.3rem; }
 article h1 b { color: var(--accent); }
