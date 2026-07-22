@@ -5,8 +5,8 @@ stadion: murrayfield-nebenplatz
 stadionname: "Edinburgh Rugby Stadium"
 stadt: "Edinburgh"
 land: Schottland
-lat: 55.9422
-lng: -3.2409
+lat: 55.941698596408635
+lng: -3.244753411366467
 heim: "Edinburgh Rugby"
 gast: "Ospreys"
 ergebnis: "45:21"

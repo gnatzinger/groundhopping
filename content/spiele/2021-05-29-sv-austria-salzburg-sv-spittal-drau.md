@@ -5,8 +5,8 @@ stadion: max-aicher
 stadionname: "Max Aicher Stadion"
 stadt: "Salzburg"
 land: Österreich
-lat: 47.7897  # Koordinaten ungefähr – bitte prüfen
-lng: 13.011
+lat: 47.791500840026586
+lng: 13.014184381626725 
 wettbewerb: "Freundschaftsspiel"
 heim: "SV Austria Salzburg"
 gast: "SV Spittal/Drau"

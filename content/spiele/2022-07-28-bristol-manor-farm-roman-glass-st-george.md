@@ -5,8 +5,8 @@ stadion: the-creek
 stadionname: "The Creek"
 stadt: "Bristol"
 land: England
-lat: 51.5027  # Koordinaten ungefähr – bitte prüfen
-lng: -2.6802
+lat: 51.48159292479527
+lng: -2.6506561697640296
 wettbewerb: "Freundschaftsspiel"
 heim: "Bristol Manor Farm"
 gast: "Roman Glass St George"

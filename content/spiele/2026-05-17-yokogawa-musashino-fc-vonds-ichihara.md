@@ -5,8 +5,8 @@ stadion: musashino
 stadionname: "Musashino Municipal Athletic Stadium"
 stadt: "Musashino (Tokio)"
 land: Japan
-lat: 35.718  # Koordinaten ungefähr – bitte prüfen
-lng: 139.564
+lat: 35.71736385159443
+lng: 139.5683078670526
 wettbewerb: "JFL Cup"
 heim: "Yokogawa Musashino FC"
 gast: "Vonds Ichihara"

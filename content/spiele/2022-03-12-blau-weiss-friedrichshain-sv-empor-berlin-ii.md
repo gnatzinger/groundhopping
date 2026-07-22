@@ -5,8 +5,8 @@ stadion: lobeckstrasse
 stadionname: "Sportplatz Lobeckstraße"
 stadt: "Berlin"
 land: Deutschland
-lat: 52.5006  # Koordinaten ungefähr – bitte prüfen
-lng: 13.4076
+lat: 52.50209265867529
+lng: 13.403995593520719
 wettbewerb: "Berlin – Bezirksliga Staffel 2"
 heim: "Blau-Weiß Friedrichshain"
 gast: "SV Empor Berlin II"

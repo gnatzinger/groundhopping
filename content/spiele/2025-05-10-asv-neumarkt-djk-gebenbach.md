@@ -5,8 +5,8 @@ stadion: deininger-weg
 stadionname: "Stadion Deininger Weg"
 stadt: "Neumarkt i.d.OPf."
 land: Deutschland
-lat: 49.2699  # Koordinaten ungefähr – bitte prüfen
-lng: 11.455
+lat: 49.26513496058943
+lng: 11.467236800224224
 wettbewerb: "Bayernliga Nord"
 heim: "ASV Neumarkt"
 gast: "DJK Gebenbach"

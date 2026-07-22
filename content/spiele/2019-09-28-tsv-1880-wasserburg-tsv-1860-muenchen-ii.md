@@ -5,8 +5,8 @@ stadion: landwehrstrasse
 stadionname: "Sportplatz an der Landwehrstraße"
 stadt: "Wasserburg am Inn"
 land: Deutschland
-lat: 48.0611  # Koordinaten ungefähr – bitte prüfen
-lng: 12.2192
+lat: 48.06409540054478
+lng: 12.23559455280487
 heim: "TSV 1880 Wasserburg"
 gast: "TSV 1860 München II"
 ergebnis: "2:0"

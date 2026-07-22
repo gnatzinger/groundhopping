@@ -5,8 +5,8 @@ stadion: qingdao-tiantai
 stadionname: "Qingdao Tiantai Stadium"
 stadt: "Qingdao"
 land: China
-lat: 36.07  # Koordinaten ungefähr – bitte prüfen
-lng: 120.38
+lat: 36.05974184734237
+lng: 120.3488117498701
 wettbewerb: "China League Two"
 heim: "Qingdao Red Lions FC"
 gast: "Nantong Haimen Codion"

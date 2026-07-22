@@ -5,8 +5,8 @@ stadion: uhlsport
 stadionname: "Uhlsport Park"
 stadt: "Unterhaching"
 land: Deutschland
-lat: 48.0653  # Koordinaten ungefähr – bitte prüfen
-lng: 11.6238
+lat: 48.07375022763475
+lng: 11.615806010477334
 wettbewerb: "3. Liga"
 heim: "SpVgg Unterhaching"
 gast: "TSV 1860 München"

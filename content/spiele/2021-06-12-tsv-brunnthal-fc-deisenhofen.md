@@ -5,8 +5,8 @@ stadion: brunnthal
 stadionname: "Sportplatz an der Jahnstraße"
 stadt: "Brunnthal"
 land: Deutschland
-lat: 47.993  # Koordinaten ungefähr – bitte prüfen
-lng: 11.679
+lat: 48.009356843025195
+lng: 11.687968621133475
 wettbewerb: "Freundschaftsspiel"
 heim: "TSV Brunnthal"
 gast: "FC Deisenhofen"

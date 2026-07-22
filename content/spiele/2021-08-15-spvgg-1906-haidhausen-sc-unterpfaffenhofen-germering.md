@@ -5,8 +5,8 @@ stadion: st-martin
 stadionname: "Sportanlage St.-Martin-Straße"
 stadt: "München"
 land: Deutschland
-lat: 48.1147  # Koordinaten ungefähr – bitte prüfen
-lng: 11.5975
+lat: 48.11758420218269
+lng: 11.586299025823605
 wettbewerb: "Bezirksliga Oberbayern Süd"
 heim: "SpVgg 1906 Haidhausen"
 gast: "SC Unterpfaffenhofen-Germering"

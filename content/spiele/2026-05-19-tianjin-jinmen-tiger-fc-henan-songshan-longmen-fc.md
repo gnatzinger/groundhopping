@@ -5,8 +5,8 @@ stadion: teda
 stadionname: "TEDA Football Stadium"
 stadt: "Tianjin"
 land: China
-lat: 39.0409  # Koordinaten ungefähr – bitte prüfen
-lng: 117.6567
+lat: 39.031414916435565
+lng: 117.72514649391437
 wettbewerb: "Chinese Super League"
 heim: "Tianjin Jinmen Tiger FC"
 gast: "Henan Songshan Longmen FC"

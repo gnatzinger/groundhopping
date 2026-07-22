@@ -5,8 +5,8 @@ stadion: hammerbach
 stadionname: "Hammerbachstadion"
 stadt: "Landshut"
 land: Deutschland
-lat: 48.5442  # Koordinaten ungefähr – bitte prüfen
-lng: 12.135
+lat: 48.532027041512684
+lng: 12.138240623993289
 wettbewerb: "Landesliga Bayern Mitte"
 heim: "SpVgg Landshut"
 gast: "TSV Kareth-Lappersdorf"

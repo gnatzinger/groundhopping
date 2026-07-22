@@ -5,8 +5,8 @@ stadion: feldbergstrasse
 stadionname: "Bezirkssportanlage Feldbergstraße"
 stadt: "München"
 land: Deutschland
-lat: 48.1266  # Koordinaten ungefähr – bitte prüfen
-lng: 11.665
+lat: 48.116143
+lng: 11.666912
 heim: "FC Dreistern Neutrudering"
 gast: "FC Perlach München"
 ergebnis: "0:0"

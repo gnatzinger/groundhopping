@@ -5,8 +5,8 @@ stadion: de-koel
 stadionname: "Covebo Stadion - De Koel -"
 stadt: "Venlo"
 land: Niederlande
-lat: 51.3565  # Koordinaten ungefähr – bitte prüfen
-lng: 6.152
+lat: 51.35186916693456
+lng: 6.179712352980891
 wettbewerb: "Eerste Divisie"
 heim: "VVV Venlo"
 gast: "FC Emmen"

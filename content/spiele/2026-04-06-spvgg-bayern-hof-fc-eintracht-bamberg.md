@@ -5,8 +5,8 @@ stadion: gruene-au
 stadionname: "Stadion Grüne Au"
 stadt: "Hof"
 land: Deutschland
-lat: 50.3172  # Koordinaten ungefähr – bitte prüfen
-lng: 11.907
+lat: 50.314724260485086 
+lng: 11.931117493400336
 wettbewerb: "Bayernliga Nord"
 heim: "SpVgg Bayern Hof"
 gast: "FC Eintracht Bamberg"

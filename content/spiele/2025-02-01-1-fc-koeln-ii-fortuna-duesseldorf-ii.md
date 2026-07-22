@@ -5,8 +5,8 @@ stadion: franz-kremer
 stadionname: "Franz-Kremer-Stadion"
 stadt: "Köln"
 land: Deutschland
-lat: 50.9176  # Koordinaten ungefähr – bitte prüfen
-lng: 6.8734
+lat: 50.90822712388917
+lng: 6.905733568300584
 wettbewerb: "Regionalliga West"
 heim: "1. FC Köln II"
 gast: "Fortuna Düsseldorf II"

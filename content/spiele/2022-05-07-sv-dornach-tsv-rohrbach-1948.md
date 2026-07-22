@@ -5,8 +5,8 @@ stadion: feldkirchner-weg
 stadionname: "Sportanlage Feldkirchner Weg"
 stadt: "Aschheim/Dornach"
 land: Deutschland
-lat: 48.1616  # Koordinaten ungefähr – bitte prüfen
-lng: 11.6981
+lat: 48.15165267367774
+lng: 11.69886022382328
 wettbewerb: "Bezirksliga Oberbayern Nord"
 heim: "SV Dornach"
 gast: "TSV Rohrbach 1948"

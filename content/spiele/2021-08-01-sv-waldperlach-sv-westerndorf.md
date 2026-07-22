@@ -5,8 +5,8 @@ stadion: waldperlach
 stadionname: "Waldstadion Waldperlach"
 stadt: "München"
 land: Deutschland
-lat: 48.0895  # Koordinaten ungefähr – bitte prüfen
-lng: 11.6478
+lat: 48.08919260747508
+lng: 11.667578786150438
 wettbewerb: "Bezirksliga Oberbayern Ost"
 heim: "SV Waldperlach"
 gast: "SV Westerndorf"

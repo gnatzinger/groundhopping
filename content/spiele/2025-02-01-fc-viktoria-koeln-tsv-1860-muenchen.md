@@ -5,8 +5,8 @@ stadion: hoehenberg
 stadionname: "Sportpark Höhenberg"
 stadt: "Köln"
 land: Deutschland
-lat: 50.9422  # Koordinaten ungefähr – bitte prüfen
-lng: 7.0435
+lat: 50.94512711256803
+lng: 7.030472825974623
 wettbewerb: "3. Liga"
 heim: "FC Viktoria Köln"
 gast: "TSV 1860 München"

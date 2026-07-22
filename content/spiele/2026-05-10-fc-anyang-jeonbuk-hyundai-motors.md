@@ -5,8 +5,8 @@ stadion: anyang
 stadionname: "Anyang Stadium"
 stadt: "Anyang"
 land: Südkorea
-lat: 37.4034  # Koordinaten ungefähr – bitte prüfen
-lng: 126.9526
+lat: 37.40516761131
+lng: 126.94643272532079
 wettbewerb: "K League 1"
 heim: "FC Anyang"
 gast: "Jeonbuk Hyundai Motors"

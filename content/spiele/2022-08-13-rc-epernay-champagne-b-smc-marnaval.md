@@ -5,8 +5,8 @@ stadion: chandon
 stadionname: "Stade Paul Chandon"
 stadt: "Épernay"
 land: Frankreich
-lat: 49.03  # Koordinaten ungefähr – bitte prüfen
-lng: 3.954
+lat: 49.057774401629004
+lng: 3.9516595983612035
 wettbewerb: "Freundschaftsspiel"
 heim: "RC Épernay Champagne B"
 gast: "SMC Marnaval"

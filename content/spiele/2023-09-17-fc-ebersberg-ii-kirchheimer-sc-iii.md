@@ -5,8 +5,8 @@ stadion: ebersberg
 stadionname: "Waldsportpark Ebersberg"
 stadt: "Ebersberg"
 land: Deutschland
-lat: 48.0662  # Koordinaten ungefähr – bitte prüfen
-lng: 11.9861
+lat: 48.09353132454756
+lng: 11.960775936670537
 heim: "FC Ebersberg II"
 gast: "Kirchheimer SC III"
 ergebnis: "0:4"

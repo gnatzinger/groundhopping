@@ -1,4 +1,4 @@
-/* Karte + Filter. Nur Leaflet, sonst kein JS. */
+/* Karte + Filter. Nur Leaflet */
 (function () {
   "use strict";
 
@@ -13,16 +13,15 @@
     return document.getElementById(id);
   });
   var f = { stadion: "", land: "", regelwerk: "", jahr: "" };
-
-  /* --- Karte: Standard-OSM, normale Auflösung (wie leafletjs.com) --- */
+/*Karte*/
   var map = L.map(mapEl, {
     minZoom: 2,
     maxBounds: [[-85, -180], [85, 180]],
     maxBoundsViscosity: 1.0
   });
-  map.setView([48, 11], 4); /* Start-Ansicht — Leaflet braucht sie, bevor
-                               Kacheln/Marker hinzugefügt werden; fitBounds
-                               unten verfeinert sie dann */
+  map.setView([48, 11], 4); /* Start-Ansicht für Leaflet vor
+                               Kacheln/Marker hinzufügung; fitBounds
+                               unten: verfeinerung */
   var tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     noWrap: true,
@@ -33,7 +32,6 @@
   tiles.once("load", function () { mapEl.classList.add("bereit"); });
   setTimeout(function () { mapEl.classList.add("bereit"); }, 5000);
 
-  /* Eigener Pin: img/marker.svg */
   var pin = L.icon({
     iconUrl: "img/marker.svg",
     iconSize: [22, 30],
@@ -44,8 +42,7 @@
   var marker = {};
   var bounds = [];
   grounds.forEach(function (g) {
-    /* Ungültige Koordinaten überspringen, damit ein Tippfehler in einem
-       Post nie die ganze Karte + Filter lahmlegt */
+    /* Ungültige Koordinaten überspringen, WICHTIG */
     var lat = parseFloat(g.lat), lng = parseFloat(g.lng);
     if (!isFinite(lat) || !isFinite(lng)) {
       if (window.console) console.warn("Groundhopper: ungültige Koordinaten für", g.id, g.lat, g.lng);
@@ -55,7 +52,7 @@
     marker[g.id] = L.marker([lat, lng], { icon: pin })
       .addTo(map)
       .bindPopup("<strong>" + g.name + "</strong><span>" + g.stadt + "</span>")
-      /* Klick toggelt Popup → Filter folgt dem Popup-Zustand (wie das ×) */
+      /* Klick toggelt Popup = Filter folgt dem Popup-Zustand */
       .on("click", function () {
         f.stadion = this.isPopupOpen() ? g.id : "";
         filternSpaeter();
@@ -76,7 +73,7 @@
     var werte = {};
     zeilen.forEach(function (z) { if (z.dataset[attr]) werte[z.dataset[attr]] = 1; });
     var keys = Object.keys(werte).sort();
-    if (attr === "jahr") keys.reverse(); /* Jahre neu → alt */
+    if (attr === "jahr") keys.reverse();
     keys.forEach(function (w) { sel.add(new Option(w, w)); });
     sel.onchange = function () { f[attr] = sel.value; render(true); };
   });
@@ -90,7 +87,7 @@
   };
 
   /* Bei Karten-Events (Pin-Klick) erst das Popup (weg-)zeichnen lassen, dann
-     filtern — ohne die Karte zu verschieben (fit=false) */
+     filtern ohne die Karte zu verschieben (fit=false) */
   function filternSpaeter() {
     requestAnimationFrame(function () { setTimeout(function () { render(false); }, 0); });
   }
@@ -111,7 +108,7 @@
       if (zeigen) { n++; offen[d.stadion] = 1; }
     });
 
-    /* 2. Marker passend ein-/ausblenden (nur display, daher schnell) */
+    /* 2. Marker passend ein-/ausblenden (nur display) */
     var sichtbar = [];
     grounds.forEach(function (g) {
       if (!marker[g.id]) return;
@@ -130,17 +127,18 @@
         : b.dataset.datum.localeCompare(a.dataset.datum);
     });
 
-    /* 4. Neu einhängen mit Jahres-Überschrift vor dem ersten sichtbaren
+    /* 4. Neu einhängen mit Jahresüberschrift vor dem ersten sichtbaren
           Spiel jedes Jahres */
     [].slice.call(liste.querySelectorAll(".jahr-kopf")).forEach(function (h) { h.remove(); });
-    var jahr = null;
+    var jahr = null, erste = true;
     sorted.forEach(function (z) {
       if (!z.hidden && z.dataset.jahr !== jahr) {
         jahr = z.dataset.jahr;
         var kopf = document.createElement("li");
-        kopf.className = "jahr-kopf";
+        kopf.className = "jahr-kopf" + (erste ? " erste" : "");
         kopf.textContent = jahr;
         liste.appendChild(kopf);
+        erste = false;
       }
       liste.appendChild(z);
     });
@@ -149,5 +147,5 @@
     reset.classList.toggle("gedimmt", !!(f.stadion || f.land || f.regelwerk || f.jahr));
   }
 
-  render(); /* baut die Jahres-Überschriften schon beim Laden */
+  render(); /* baut die Jahres überschriften schon beim Laden */
 })();

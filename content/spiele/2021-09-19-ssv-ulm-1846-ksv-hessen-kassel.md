@@ -5,8 +5,8 @@ stadion: donaustadion
 stadionname: "Donaustadion"
 stadt: "Ulm"
 land: Deutschland
-lat: 48.4038  # Koordinaten ungefähr – bitte prüfen
-lng: 10.0009
+lat: 48.4044300459781
+lng: 10.009467195150654
 wettbewerb: "Regionalliga Südwest"
 heim: "SSV Ulm 1846"
 gast: "KSV Hessen Kassel"

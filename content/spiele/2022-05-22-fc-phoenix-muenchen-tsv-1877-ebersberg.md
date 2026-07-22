@@ -5,8 +5,8 @@ stadion: langkofelstrasse
 stadionname: "Sportanlage Langkofelstraße"
 stadt: "München"
 land: Deutschland
-lat: 48.1015  # Koordinaten ungefähr – bitte prüfen
-lng: 11.6087
+lat: 48.12164913800981
+lng: 11.636466831053863
 wettbewerb: "Kreisliga München 3"
 heim: "FC Phönix München"
 gast: "TSV 1877 Ebersberg"

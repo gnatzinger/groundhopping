@@ -5,8 +5,8 @@ stadion: dantestadion
 stadionname: "Dantestadion"
 stadt: "München"
 land: Deutschland
-lat: 48.1712  # Koordinaten ungefähr – bitte prüfen
-lng: 11.5334
+lat: 48.167937537716654
+lng: 11.528805079794202
 wettbewerb: "Regionalliga Bayern"
 heim: "Türkgücü München"
 gast: "SpVgg Ansbach"

@@ -5,8 +5,8 @@ stadion: haken
 stadionname: "Sportplatz Haken"
 stadt: "Kaufbeuren"
 land: Deutschland
-lat: 47.88  # Koordinaten ungefähr – bitte prüfen
-lng: 10.63
+lat: 47.89498068787217
+lng: 10.621167533074294
 heim: "SpVgg Kaufbeuren U17"
 gast: "FC Memmingen U17"
 ergebnis: "0:7"

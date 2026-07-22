@@ -103,6 +103,11 @@ header nav a.aktiv { color: var(--foreground); font-weight: 600; text-decoration
   background-repeat: no-repeat;
 }
 .filter select option, .sortieren select option { background: var(--background); }
+/* kein Fokus-Rahmen nach dem Auswählen */
+.filter select:focus, .sortieren select:focus, .filter button:focus {
+  outline: none;
+  box-shadow: none;
+}
 
 /* Spielliste (Etch: eine Zeile pro Post, ganze Zeile = Link) */
 ul.spiele { list-style: none; }
@@ -127,7 +132,8 @@ ul.spiele li.jahr-kopf {
   font-weight: 600;
   margin: 1.1rem 0 0.25rem;
 }
-ul.spiele li.jahr-kopf:first-child { margin-top: 0; }
+ul.spiele li.jahr-kopf:first-child,
+ul.spiele li.jahr-kopf.erste { margin-top: 0; }
 
 /* Einzelseiten */
 article h1 { font-size: 1.35rem; margin: 0.3rem 0 0.3rem; }
