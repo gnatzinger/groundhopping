@@ -22,7 +22,7 @@
   map.setView([48, 11], 4); /* Start-Ansicht für Leaflet vor
                                Kacheln/Marker hinzufügung; fitBounds
                                unten: verfeinerung */
-  /* CARTO Voyager mit Retina ({r} → @2x): scharf, keine Kachel-Fugen */
+  /* CARTO Voyager mit Retina ({r} → @2x): scharf */
   var tiles = L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
     maxZoom: 20,
     noWrap: true,
@@ -40,9 +40,7 @@
     popupAnchor: [0, -26]
   });
 
-  /* Marker in eine Cluster-Gruppe (falls Plugin da) — bei Ballungen (München,
-     Frankfurt) werden Pins zu einer Zahl zusammengefasst, die beim Reinzoomen
-     aufplatzt. Ohne Plugin einfache Gruppe als Fallback. */
+  /* Marker in eine Cluster-Gruppe */
   var clusterGroup = (L.markerClusterGroup
     ? L.markerClusterGroup({ showCoverageOnHover: false, maxClusterRadius: 30 })
     : L.layerGroup()).addTo(map);
@@ -88,13 +86,13 @@
     else sicht.forEach(function (m) { clusterGroup.addLayer(m); });
     return coords;
   }
-  /* Standard-Ansicht: alle Stadien, großzügig gerahmt (weiter rausgezoomt) */
+  /* Standard-Ansicht: alle Stadien */
   function fitTo(coords) {
     if (coords.length) map.fitBounds(coords, { padding: [45, 45], maxZoom: 11 });
   }
   fitTo(bounds);
 
-  /* Beschriftung (erste Option) je Select merken, dann Handler setzen */
+  /* Beschriftung (erste Option) je Select merken, dann Handler */
   var labels = {};
   selects.forEach(function (sel) {
     var attr = sel.id.slice(2);
@@ -109,9 +107,7 @@
     aktualisieren(true);
   };
 
-  /* Verkettete Filter: jedes Dropdown zeigt nur Werte, die zusammen mit den
-     ANDEREN aktiven Filtern wirklich Ergebnisse liefern. Ungültig gewordene
-     Auswahl wird zurückgesetzt → nie leere Ergebnisse. */
+  /* Verkettete Filter */
   function facetten() {
     selects.forEach(function (sel) {
       var attr = sel.id.slice(2);
@@ -140,14 +136,14 @@
     if (fit) fitTo(coords); /* Karte auf sichtbare Marker nachführen */
   }
 
-  /* Bei Karten-Events (Pin-Klick) erst das Popup (weg-)zeichnen lassen, dann
+  /* Bei Karten-Events (Pin-Klick) erst das Popup weg, dann
      filtern ohne die Karte zu verschieben (fit=false) */
   function filternSpaeter() {
     /* Pin-Klick filtert nur Liste + Karte, lässt die Dropdowns unangetastet */
     requestAnimationFrame(function () { setTimeout(function () { render(false); }, 0); });
   }
 
-  /* Nur die LISTE filtern/sortieren (Marker macht markerSync separat) */
+  /* Nur die liste filtern/sortieren (Marker: markerSync */
   function render() {
     var richtung = sortSel.value;
     var n = 0;
