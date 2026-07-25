@@ -1,6 +1,6 @@
 ---
 title: "TSV 1860 Rosenheim 2:2 SV Schalding-Heining"
-date: 2026-05-19
+date: 2026-07-19
 stadion: jahnstadion-ro
 stadionname: "Jahnstation Rosenheim"
 stadt: "Rosenheim"
@@ -12,4 +12,5 @@ heim: "TSV 1860 Rosenheim"
 gast: "SV Schalding-Heining"
 ergebnis: "2:2"
 regelwerk: "Association football"
+zuschauer: 491
 ---
