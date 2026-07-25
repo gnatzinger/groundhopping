@@ -22,10 +22,11 @@
   map.setView([48, 11], 4); /* Start-Ansicht für Leaflet vor
                                Kacheln/Marker hinzufügung; fitBounds
                                unten: verfeinerung */
-  var tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 19,
+  /* CARTO Voyager mit Retina ({r} → @2x): scharf, keine Kachel-Fugen */
+  var tiles = L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+    maxZoom: 20,
     noWrap: true,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>'
   }).addTo(map);
 
   /* Ladeindikator */
@@ -39,6 +40,13 @@
     popupAnchor: [0, -26]
   });
 
+  /* Marker in eine Cluster-Gruppe (falls Plugin da) — bei Ballungen (München,
+     Frankfurt) werden Pins zu einer Zahl zusammengefasst, die beim Reinzoomen
+     aufplatzt. Ohne Plugin einfache Gruppe als Fallback. */
+  var clusterGroup = (L.markerClusterGroup
+    ? L.markerClusterGroup({ showCoverageOnHover: false, maxClusterRadius: 30 })
+    : L.layerGroup()).addTo(map);
+
   var marker = {};
   var bounds = [];
   grounds.forEach(function (g) {
@@ -50,7 +58,6 @@
     }
     bounds.push([lat, lng]);
     marker[g.id] = L.marker([lat, lng], { icon: pin })
-      .addTo(map)
       .bindPopup("<strong>" + g.name + "</strong><span>" + g.stadt + "</span>")
       /* Klick toggelt Popup = Filter folgt dem Popup-Zustand */
       .on("click", function () {
@@ -61,40 +68,89 @@
         if (f.stadion === g.id) { f.stadion = ""; filternSpaeter(); }
       });
   });
+
+  /* Marker-Cluster an die aktiven Dropdown-Filter anpassen (NICHT an Pin-Klick).
+     Gibt die Koordinaten der sichtbaren Marker zurück (zum Einpassen). */
+  function markerSync() {
+    var offenM = {};
+    zeilen.forEach(function (z) {
+      var d = z.dataset;
+      if ((!f.land || d.land === f.land) &&
+          (!f.regelwerk || d.regelwerk === f.regelwerk) &&
+          (!f.jahr || d.jahr === f.jahr)) offenM[d.stadion] = 1;
+    });
+    var sicht = [], coords = [];
+    grounds.forEach(function (g) {
+      if (marker[g.id] && offenM[g.id]) { sicht.push(marker[g.id]); coords.push(marker[g.id].getLatLng()); }
+    });
+    clusterGroup.clearLayers();
+    if (clusterGroup.addLayers) clusterGroup.addLayers(sicht);
+    else sicht.forEach(function (m) { clusterGroup.addLayer(m); });
+    return coords;
+  }
   /* Standard-Ansicht: alle Stadien, großzügig gerahmt (weiter rausgezoomt) */
   function fitTo(coords) {
     if (coords.length) map.fitBounds(coords, { padding: [45, 45], maxZoom: 11 });
   }
   fitTo(bounds);
 
-  /* Filter-Selects aus der Liste befüllen */
+  /* Beschriftung (erste Option) je Select merken, dann Handler setzen */
+  var labels = {};
   selects.forEach(function (sel) {
     var attr = sel.id.slice(2);
-    var werte = {};
-    zeilen.forEach(function (z) { if (z.dataset[attr]) werte[z.dataset[attr]] = 1; });
-    var keys = Object.keys(werte).sort();
-    if (attr === "jahr") keys.reverse();
-    keys.forEach(function (w) { sel.add(new Option(w, w)); });
-    sel.onchange = function () { f[attr] = sel.value; render(true); };
+    labels[attr] = sel.options[0].textContent; /* "Land" / "Regelwerk" / "Jahr" */
+    sel.onchange = function () { f[attr] = sel.value; aktualisieren(true); };
   });
   sortSel.onchange = function () { render(false); }; /* Sortieren bewegt die Karte nicht */
 
   reset.onclick = function () {
     f.stadion = f.land = f.regelwerk = f.jahr = "";
-    selects.forEach(function (sel) { sel.value = ""; });
     map.closePopup();
-    render(true);
+    aktualisieren(true);
   };
+
+  /* Verkettete Filter: jedes Dropdown zeigt nur Werte, die zusammen mit den
+     ANDEREN aktiven Filtern wirklich Ergebnisse liefern. Ungültig gewordene
+     Auswahl wird zurückgesetzt → nie leere Ergebnisse. */
+  function facetten() {
+    selects.forEach(function (sel) {
+      var attr = sel.id.slice(2);
+      var werte = {};
+      zeilen.forEach(function (z) {
+        var d = z.dataset, ok = true;
+        ["land", "regelwerk", "jahr"].forEach(function (a) {
+          if (a !== attr && f[a] && d[a] !== f[a]) ok = false;
+        });
+        if (ok && d[attr]) werte[d[attr]] = 1;
+      });
+      var keys = Object.keys(werte).sort();
+      if (attr === "jahr") keys.reverse();
+      if (f[attr] && !werte[f[attr]]) f[attr] = ""; /* Auswahl ungültig → weg */
+      sel.innerHTML = "";
+      sel.add(new Option(labels[attr], ""));
+      keys.forEach(function (w) { sel.add(new Option(w, w)); });
+      sel.value = f[attr] || "";
+    });
+  }
+
+  function aktualisieren(fit) {
+    facetten();
+    var coords = markerSync(); /* Cluster an Dropdown-Filter anpassen */
+    render();
+    if (fit) fitTo(coords); /* Karte auf sichtbare Marker nachführen */
+  }
 
   /* Bei Karten-Events (Pin-Klick) erst das Popup (weg-)zeichnen lassen, dann
      filtern ohne die Karte zu verschieben (fit=false) */
   function filternSpaeter() {
+    /* Pin-Klick filtert nur Liste + Karte, lässt die Dropdowns unangetastet */
     requestAnimationFrame(function () { setTimeout(function () { render(false); }, 0); });
   }
 
-  function render(fit) {
+  /* Nur die LISTE filtern/sortieren (Marker macht markerSync separat) */
+  function render() {
     var richtung = sortSel.value;
-    var n = 0, offen = {};
+    var n = 0;
 
     /* 1. Sichtbarkeit */
     zeilen.forEach(function (z) {
@@ -105,22 +161,10 @@
         (!f.regelwerk || d.regelwerk === f.regelwerk) &&
         (!f.jahr || d.jahr === f.jahr);
       z.hidden = !zeigen;
-      if (zeigen) { n++; offen[d.stadion] = 1; }
+      if (zeigen) { n++; }
     });
 
-    /* 2. Marker passend ein-/ausblenden (nur display) */
-    var sichtbar = [];
-    grounds.forEach(function (g) {
-      if (!marker[g.id]) return;
-      var el = marker[g.id].getElement();
-      if (el) el.style.display = offen[g.id] ? "" : "none";
-      if (offen[g.id]) sichtbar.push(marker[g.id].getLatLng());
-    });
-
-    /* Karte auf die sichtbaren Marker nachführen (nur bei Filterwechsel) */
-    if (fit) fitTo(sichtbar);
-
-    /* 3. Sortieren */
+    /* 2. Sortieren */
     var sorted = zeilen.slice().sort(function (a, b) {
       return richtung === "asc"
         ? a.dataset.datum.localeCompare(b.dataset.datum)
@@ -147,5 +191,5 @@
     reset.classList.toggle("gedimmt", !!(f.stadion || f.land || f.regelwerk || f.jahr));
   }
 
-  render(); /* baut die Jahres überschriften schon beim Laden */
+  aktualisieren(false); /* Dropdowns befüllen + Liste/Überschriften beim Laden */
 })();

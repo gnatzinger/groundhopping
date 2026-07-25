@@ -101,7 +101,10 @@ header nav a.aktiv { color: var(--foreground); font-weight: 600; text-decoration
   background-position: calc(100% - 12px) 55%, calc(100% - 8px) 55%;
   background-size: 4px 4px, 4px 4px;
   background-repeat: no-repeat;
+  flex-shrink: 0; /* nie schrumpfen: natürliche Breite bleibt, zappelt nicht
+                     beim Marker-Klick; lange Werte bekommen mehr Platz */
 }
+.filter button { flex-shrink: 0; }
 .filter select option, .sortieren select option { background: var(--background); }
 /* kein Fokus-Rahmen nach dem Auswählen */
 .filter select:focus, .sortieren select:focus, .filter button:focus {
@@ -244,6 +247,21 @@ footer a { color: var(--muted); }
 .leaflet-popup-content strong { display: block; }
 .leaflet-popup-content span { color: var(--muted); font-size: 0.8rem; }
 .leaflet-container { font-family: inherit; }
+/* Marker-Cluster im Theme-Grün (statt Standard blau/gelb/rot) */
+.marker-cluster {
+  background: color-mix(in srgb, var(--accent) 25%, transparent);
+  background-clip: padding-box;
+  border-radius: 50%;
+}
+.marker-cluster div {
+  width: 30px; height: 30px; margin: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  text-align: center;
+  font: 600 12px "Fira Code", monospace;
+}
+.marker-cluster span { line-height: 30px; }
 .leaflet-bar, .leaflet-bar a {
   border-radius: 0 !important;
   box-shadow: none !important;

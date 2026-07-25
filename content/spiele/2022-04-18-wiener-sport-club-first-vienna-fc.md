@@ -5,8 +5,8 @@ stadion: wsc-platz
 stadionname: "Wiener Sport-Club-Platz"
 stadt: "Wien"
 land: Österreich
-lat: 48.2264
-lng: 16.3229
+lat: 48.22603249072395
+lng: 16.311282666144315
 wettbewerb: "Regionalliga Ost – LIGA-Cup"
 heim: "Wiener Sport-Club"
 gast: "First Vienna FC"

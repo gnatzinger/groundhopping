@@ -1,5 +1,6 @@
 {{ define "head" }}
 <link rel="stylesheet" href="{{ "css/leaflet.css" | relURL }}">
+<link rel="stylesheet" href="{{ "css/MarkerCluster.css" | relURL }}">
 {{ end }}
 
 {{ define "main" }}
@@ -49,5 +50,6 @@
 
 <script>window.GROUNDS = {{ $grounds | jsonify | safeJS }};</script>
 <script src="{{ "js/leaflet.js" | relURL }}"></script>
+<script src="{{ "js/leaflet.markercluster.js" | relURL }}"></script>
 <script src="{{ "js/map.js" | relURL }}"></script>
 {{ end }}

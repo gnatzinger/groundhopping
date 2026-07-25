@@ -5,9 +5,11 @@
 .DS_Store
 
 # Nur lokale Doku/Werkzeuge – nicht auf GitHub
-/EINBETTUNGEN.md
 /README.md
 /ANPASSUNGEN.md
 /HOSTING.md
+/EINBETTUNGEN.md
+/CLUSTER.md
+/VORLAGE-neues-spiel.md
 /tools/
 /static/img/EIGENE-PINS.txt
