@@ -17,7 +17,10 @@
   var map = L.map(mapEl, {
     minZoom: 2,
     maxBounds: [[-85, -180], [85, 180]],
-    maxBoundsViscosity: 1.0
+    maxBoundsViscosity: 1.0,
+    wheelPxPerZoomLevel: 140, /* Trackpad-Pinch dämpfen: eine Geste ≈ eine
+                                 Zoomstufe statt mehrerer (Standard 60) */
+    wheelDebounceTime: 60
   });
   map.setView([48, 11], 4); /* Start-Ansicht für Leaflet vor
                                Kacheln/Marker hinzufügung; fitBounds
