@@ -17,17 +17,14 @@
     minZoom: 2,
     maxBounds: [[-85, -180], [85, 180]],
     maxBoundsViscosity: 1.0,
-    wheelPxPerZoomLevel: 120  /* Trackpad-Pinch dämpfen (stabil in allen
-                                 Browsern; kein zoomSnap:0 → bricht Safari) */
+    wheelPxPerZoomLevel: 120
   });
-  map.setView([48, 11], 4); /* Start-Ansicht für Leaflet vor
-                               Kacheln/Marker hinzufügung; fitBounds
-                               unten: verfeinerung */
+  map.setView([48, 11], 4);
   /* CARTO Voyager mit Retina ({r} → @2x): scharf */
-  var tiles = L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+  var tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 20,
     noWrap: true,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>'
+    attribution: '&copy; OpenStreetMap contributors'
   }).addTo(map);
 
   /* Ladeindikator */

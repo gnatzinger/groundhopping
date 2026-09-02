@@ -7,8 +7,8 @@
   if (!M.length) return;
 
   var WT = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
-  function saisonOf(d) { /* Fußball-Saison: ab Juli neues Jahr */
-    var y = +d.slice(0, 4), mo = +d.slice(5, 7), s = mo >= 7 ? y : y - 1;
+  function saisonOf(d) { // Fußball-Saison: ab August neues Jahr
+    var y = +d.slice(0, 4), mo = +d.slice(5, 7), s = mo >= 8 ? y : y - 1;
     return s + "/" + String(s + 1).slice(2);
   }
   M.forEach(function (m) {
