@@ -1,7 +1,7 @@
 ---
 title: "1. FC Schweinfurt 2:2 TSV 1860 München"
 date: 2026-08-01
-stadion:"sachs-stadion"
+stadion: sachs-stadion
 stadionname: "Sachs-Stadion"
 stadt: "Schweinfurt"
 land: Deutschland
