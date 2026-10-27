@@ -2,7 +2,7 @@
 title: "FC Schwabing 56 1:0 Eintracht Karlsfeld"
 date: 2025-07-22
 stadion: guerickestrasse
-stadionname: ""
+stadionname: "Sportanlage Guerickestraße"
 stadt: "München"
 land: Deutschland
 lat: 48.17570895887198
