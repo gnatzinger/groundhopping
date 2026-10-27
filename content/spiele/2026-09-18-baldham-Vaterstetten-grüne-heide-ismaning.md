@@ -15,3 +15,5 @@ regelwerk: "Association football"
 ---
 
 Endlich das wunderschöne Stadion in Vaterstetten gemacht. Tolle Anlage, Kiosk und eine beeindruckende Tribüne mit etwas Ausbau auf der Gegengerade. Hat sich trotz des unangenehmes Auftreten der Gäste gelohnt!
+
+<iframe title="Pixelfed Post Embed" src="https://pixelfed.social/p/gnatzinger/1006773248157866773/embed?caption=false&likes=false&layout=full&ui-mode=system" class="pixelfed__embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script async defer src="https://pixelfed.social/embed.js"></script>
